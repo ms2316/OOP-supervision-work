@@ -89,30 +89,20 @@ public class LinkedList{
         }
     }
 
-
-
-    public boolean cycles(LinkedList list){
-        if(head==null) { //single element list has no cycles
-            return false;
-        }
-
-        Node slow = head; //set a slow pointer
-        Node fast= head;  //set a fast pointer
-
-        while(true){ //keeps iterating pointers around list until a result is found
-
-            slow=slow.getNext(); //set speed of slow pointer to 1 element per iteration
-
-            if(fast != null) fast = fast.getNext().getNext(); //checks if the pointer is not at end/null pointer then goes twice the speed of s, or two elements per iteration
-            else return false;
-
-            if(slow==null || fast == null) return false; // if either hits null/end there is no loop
-
-            if (slow==fast) return true; // if they meet at the same node a cycle is found
-
-        }
-
-
-    }
+	public boolean isCycle() {
+		if (head == null) 
+			return false;
+			
+		Node slow = head;
+		Node fast = head;
+		while (fast.getNext() != null && (fast.getNext()).getNext() != null) {
+			slow = slow.getNext();
+			fast = (fast.getNext()).getNext();
+			if (slow == fast)
+				return true;
+		}
+		
+		return false;
+	}
 
 }
